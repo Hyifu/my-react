@@ -269,7 +269,9 @@ module.exports = {
         // https://github.com/facebookincubator/create-react-app/issues/2376
         // Pending further investigation:
         // https://github.com/mishoo/UglifyJS2/issues/2011
-        comparisons: false
+        comparisons: false,
+        // 生产版本移除所有 console
+        drop_console: true
       },
       mangle: {
         safari10: true
