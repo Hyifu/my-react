@@ -11,6 +11,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter')
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const getClientEnvironment = require('./env')
 const paths = require('./paths')
+const themeConfig = require('./theme')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -146,7 +147,7 @@ module.exports = {
             loader: require.resolve('babel-loader'),
             options: {
               plugins: [
-                ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }] // `style: true` 会加载 less 文件
+                ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }] // `style: true` 会加载 less 文件
               ],
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -187,6 +188,38 @@ module.exports = {
                       flexbox: 'no-2009'
                     })
                   ]
+                }
+              }
+            ]
+          },
+          // 配置 Ant Design 的自定义主题
+          {
+            test: /\.less$/,
+            use: [
+              require.resolve('style-loader'),
+              require.resolve('css-loader'),
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9'
+                      ],
+                      flexbox: 'no-2009'
+                    })
+                  ]
+                }
+              },
+              {
+                loader: require.resolve('less-loader'),
+                options: {
+                  modifyVars: themeConfig
                 }
               }
             ]

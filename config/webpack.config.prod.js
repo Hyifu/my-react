@@ -11,6 +11,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const eslintFormatter = require('react-dev-utils/eslintFormatter')
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
 const paths = require('./paths')
+const themeConfig = require('./theme')
 const getClientEnvironment = require('./env')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -20,7 +21,8 @@ const publicPath = paths.servedPath
 // For these, "homepage" can be set to "." to enable relative asset paths.
 const shouldUseRelativeAssetPaths = publicPath === './'
 // Source maps are resource heavy and can cause out of memory issue for large source files.
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
+// const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false'
+const shouldUseSourceMap = false
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
@@ -149,7 +151,7 @@ module.exports = {
             loader: require.resolve('babel-loader'),
             options: {
               plugins: [
-                ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }] // `style: true` 会加载 less 文件
+                ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }] // `style: true` 会加载 less 文件
               ],
               compact: true
             }
@@ -212,6 +214,51 @@ module.exports = {
               )
             )
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+          },
+          // 配置 Ant Design 的自定义主题
+          {
+            test: /\.less$/,
+            loader: ExtractTextPlugin.extract(
+              Object.assign(
+                {
+                  use: [
+                    {
+                      loader: require.resolve('css-loader'),
+                      options: {
+                        importLoaders: 1,
+                        minimize: true,
+                        sourceMap: shouldUseSourceMap
+                      }
+                    },
+                    {
+                      loader: require.resolve('postcss-loader'),
+                      options: {
+                        ident: 'postcss',
+                        plugins: () => [
+                          require('postcss-flexbugs-fixes'),
+                          autoprefixer({
+                            browsers: [
+                              '>1%',
+                              'last 4 versions',
+                              'Firefox ESR',
+                              'not ie < 9'
+                            ],
+                            flexbox: 'no-2009'
+                          })
+                        ]
+                      }
+                    },
+                    {
+                      loader: require.resolve('less-loader'),
+                      options: {
+                        modifyVars: themeConfig
+                      }
+                    }
+                  ]
+                },
+                extractTextPluginOptions
+              )
+            )
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
