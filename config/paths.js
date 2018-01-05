@@ -34,7 +34,8 @@ const getPublicUrl = appPackageJson =>
 function getServedPath (appPackageJson) {
   const publicUrl = getPublicUrl(appPackageJson)
   const servedUrl =
-    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/')
+    // 配置生产环境资源托管根路径
+    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/my_react')
   return ensureSlash(servedUrl, true)
 }
 
