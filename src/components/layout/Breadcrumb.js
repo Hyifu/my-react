@@ -5,9 +5,9 @@ export default class extends React.Component {
   render () {
     return (
       <Breadcrumb style={{ paddingBottom: '16px' }}>
-        <Breadcrumb.Item>主页</Breadcrumb.Item>
-        <Breadcrumb.Item>一级菜单</Breadcrumb.Item>
-        <Breadcrumb.Item>二级菜单</Breadcrumb.Item>
+        <Breadcrumb.Item>首页</Breadcrumb.Item>
+        <Breadcrumb.Item>电影</Breadcrumb.Item>
+        <Breadcrumb.Item>正在热映</Breadcrumb.Item>
       </Breadcrumb>
     )
   }

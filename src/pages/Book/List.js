@@ -4,7 +4,7 @@ export default class extends React.Component {
   render () {
     return (
       <div>
-        <div>博客列表</div>
+        <div>书籍列表</div>
       </div>
     )
   }

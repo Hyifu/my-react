@@ -1,9 +1,7 @@
 import { connect } from 'react-redux'
 import Sider from '../../components/layout/Sider'
 
-const mapStateToProps = state => ({
-  user: state.app.user
-})
+const mapStateToProps = state => ({})
 
 const mapDispatchToProps = {}
 

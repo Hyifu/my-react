@@ -12,12 +12,13 @@ export default class extends React.Component {
         <Menu
           theme='dark'
           mode='horizontal'
-          defaultSelectedKeys={['1']}
+          selectedKeys={['movie']}
           style={{ lineHeight: '64px' }}
         >
-          <Menu.Item key='1'>首页</Menu.Item>
-          <Menu.Item key='2'>邮件中心</Menu.Item>
-          <Menu.Item key='3'>我的博客</Menu.Item>
+          <Menu.Item key='home'>首页</Menu.Item>
+          <Menu.Item key='movie'>电影</Menu.Item>
+          <Menu.Item key='book'>读书</Menu.Item>
+          <Menu.Item key='music'>音乐</Menu.Item>
         </Menu>
       </Layout.Header>
     )
