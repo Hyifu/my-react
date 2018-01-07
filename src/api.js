@@ -1,9 +1,9 @@
-const callApi = url => (
-  new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('成功')
-    }, 2000)
-  })
-)
+import fetch from 'isomorphic-fetch'
 
-export const apiLogin = () => callApi('/login')
+const callApi = url => {
+  fetch(url).then(response => {
+    console.log(response.text())
+  })
+}
+
+export const apiLogin = () => callApi('/movie/top250')

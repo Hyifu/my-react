@@ -36,7 +36,6 @@ module.exports = {
   entry: [
     // We ship a few polyfills by default:
     'babel-polyfill',
-    'whatwg-fetch',
     // Include an alternative client for WebpackDevServer. A client's job is to
     // connect to WebpackDevServer by a socket and get notified about changes.
     // When you save a file, the client will either apply hot updates (in case
