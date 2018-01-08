@@ -1,16 +1,21 @@
-import Home from '../containers/Home'
-import Login from '../containers/Login'
-import NotFound from '../pages/NotFound'
-//
-import movieRoutes from './movie'
+import asyncComponent from './components/Async'
+import Home from './containers/Home'
+import Login from './containers/Login'
+import NotFound from './pages/NotFound'
+
+// 电影模块
+const AsyncMovie = asyncComponent(() => import('./pages/Movie'))
 
 export default [
-  ...movieRoutes,
   { path: '/',
     exact: true,
     type: 'HOME',
     name: '首页',
     component: Home
+  },
+  { path: '/movie',
+    type: 'MOVIE',
+    component: AsyncMovie
   },
   { path: '/book',
     type: 'BOOK',
