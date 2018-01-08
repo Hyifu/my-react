@@ -3,6 +3,9 @@ import { Breadcrumb } from 'antd'
 
 export default class extends React.Component {
   render () {
+    if (!this.props.visible) {
+      return null
+    }
     return (
       <Breadcrumb style={{ paddingBottom: '16px' }}>
         <Breadcrumb.Item>首页</Breadcrumb.Item>

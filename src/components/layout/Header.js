@@ -4,6 +4,9 @@ import { Layout, Menu } from 'antd'
 
 export default class extends React.Component {
   render () {
+    if (!this.props.visible) {
+      return null
+    }
     return (
       <Layout.Header className='header'>
         <a href='/' style={{ height: '48px', float: 'left', marginTop: '8px', lineHeight: 1 }}>

@@ -3,6 +3,9 @@ import { Layout, Menu } from 'antd'
 
 export default class extends React.Component {
   render () {
+    if (!this.props.visible) {
+      return null
+    }
     return (
       <Layout.Sider width={200}>
         <Menu
