@@ -1,3 +1,6 @@
-module.exports = {
-  'primary-color': '#1da57a'
+module.exports = function (publicUrl) {
+  return {
+    'primary-color': '#1da57a',
+    'icon-url': `${publicUrl}"/fonts/iconfont"`
+  }
 }

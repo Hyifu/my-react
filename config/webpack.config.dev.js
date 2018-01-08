@@ -218,7 +218,7 @@ module.exports = {
               {
                 loader: require.resolve('less-loader'),
                 options: {
-                  modifyVars: themeConfig
+                  modifyVars: themeConfig(publicUrl)
                 }
               }
             ]
