@@ -1,33 +1,27 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Loadable from 'react-loadable'
 
 export default function (importComponent) {
-  return class extends React.Component {
-    state = {
-      component: null
-    }
-
-    async componentDidMount () {
-      const { default: component } = await importComponent()
-      this.setState({ component })
-    }
-
-    render () {
-      const Component = this.state.component
-      return (
-        Component ? <Component {...this.props} /> : <Loading />
-      )
+  const LoadingComponent = ({ isLoading, error }) => {
+    if (isLoading) {
+      return <div style={loadStyle}>组件加载中...</div>
+    } else if (error) {
+      return <div style={loadStyle}>组件加载失败，请 <a onClick={window.location.reload}>刷新重试</a> 或 <Link to='/'>返回首页</Link></div>
+    } else {
+      return null
     }
   }
+
+  return Loadable({
+    loader: importComponent,
+    loading: LoadingComponent
+  })
 }
 
-// 组件加载提示
-const Loading = () => (
-  <div style={{
-    fontSize: '13px',
-    color: '#999',
-    textAlign: 'center',
-    lineHeight: '48px'
-  }}>
-    加载组件中...
-  </div>
-)
+const loadStyle = {
+  fontSize: '13px',
+  color: '#999',
+  textAlign: 'center',
+  lineHeight: '48px'
+}
