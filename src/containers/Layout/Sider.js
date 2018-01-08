@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Sider from '../../components/layout/Sider'
 
 const mapStateToProps = state => ({
@@ -7,4 +8,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sider)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Sider))

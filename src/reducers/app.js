@@ -14,7 +14,7 @@ const layout = (state = {
   header: true,
   sider: true,
   footer: true,
-  bread: true
+  bread: false
 }, action) => {
   return state
 }

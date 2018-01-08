@@ -10,7 +10,6 @@ export default [
   { path: '/',
     exact: true,
     type: 'HOME',
-    name: '首页',
     component: Home
   },
   { path: '/movie',
@@ -29,8 +28,12 @@ export default [
     type: 'LOGIN',
     component: Login
   },
-  { path: '/*',
-    type: '404',
+  { path: '/403',
+    type: '403',
+    component: NotFound
+  },
+  { path: '*',
+    type: '403',
     component: NotFound
   }
 ]

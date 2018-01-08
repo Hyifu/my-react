@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import MODULES from './modules'
 
 import { Layout } from 'antd'
@@ -11,13 +11,15 @@ import Footer from './containers/Layout/Footer'
 // 负责 Layout 的呈现控制，但不干预其数据
 export default class extends React.Component {
   render () {
+    const unAuthorized = false // 判断页面授权情况
+    const unLogin = false // 判断登录情况
     return (
       <BrowserRouter>
         <Layout style={{ height: '100vh' }}>
           <Header />
           <Layout>
             <Sider />
-            <Layout style={{ padding: '16px' }}>
+            <Layout style={{ padding: '12px' }}>
               <Breadcrumb />
               <Layout.Content style={{ background: '#fff', padding: '16px', borderRadius: '5px' }}>
                 <Switch>
@@ -27,7 +29,17 @@ export default class extends React.Component {
                       exact={route.exact}
                       key={route.type}
                       path={route.path}
-                      render={() => <route.component basePath={route.path} />}
+                      render={() => {
+                        // 当未登录时
+                        if (unLogin && route.path !== '/login') {
+                          return <Redirect to={{ pathname: '/login' }} />
+                        }
+                        // 当未授权时
+                        if (unAuthorized && route.path !== '/403') {
+                          return <Redirect to={{ pathname: '/403' }} />
+                        }
+                        return <route.component basePath={route.path} />
+                      }}
                     />
                   )) }
                 </Switch>
