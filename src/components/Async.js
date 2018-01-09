@@ -15,7 +15,8 @@ export default function (importComponent) {
 
   return Loadable({
     loader: importComponent,
-    loading: LoadingComponent
+    loading: LoadingComponent,
+    timeout: 5000 // 5 秒超时处理
   })
 }
 

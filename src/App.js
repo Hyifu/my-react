@@ -8,7 +8,6 @@ import Sider from './containers/Layout/Sider'
 import Breadcrumb from './containers/Layout/Breadcrumb'
 import Footer from './containers/Layout/Footer'
 
-// 负责 Layout 的呈现控制，但不干预其数据
 export default class extends React.Component {
   render () {
     const unAuthorized = false // 判断页面授权情况

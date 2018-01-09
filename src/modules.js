@@ -33,7 +33,7 @@ export default [
     component: NotFound
   },
   { path: '*',
-    type: '403',
+    type: '404',
     component: NotFound
   }
 ]
