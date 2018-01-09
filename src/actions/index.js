@@ -1,12 +1,8 @@
-import AT from '../constants/actionTypes'
+import { AT, createAsyncTypes } from '../constants/actionTypes'
 
-const createRequest = base => {
-  // 创建三种状态的 ActionType
-  const TYPES = {
-    R: `${base}_REQUEST`,
-    S: `${base}_SUCCESS`,
-    F: `${base}_FAILURE`
-  }
+const createAsyncRequest = base => {
+  // 创建异步请求的三种状态 ActionType
+  const TYPES = createAsyncTypes(base)
   // 创建 Action 的 Creator
   const Action = (type, payload = {}) => ({ type, ...payload })
   //
@@ -19,7 +15,7 @@ const createRequest = base => {
 }
 
 //
-// ********************************************************************
+// *******************业务代码********************
 //
 
-export const onLogin = createRequest(AT.USER)
+export const onMovieList = createAsyncRequest(AT.MOVIE_LIST)

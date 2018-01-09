@@ -1,9 +1,14 @@
 import fetch from 'isomorphic-fetch'
 
 const callApi = url => {
-  fetch(url).then(response => {
-    console.log(response.text())
-  })
+  return fetch(url).then(response => {
+    const result = response.json()
+    if (!response.ok) {
+      throw new Error(result)
+    }
+    return result
+  }).then(res => ({ res })
+  ).catch(error => ({ error }))
 }
 
-export const apiLogin = () => callApi('/movie/top250')
+export const apiMovieList = type => callApi(`//movie/${type}`)

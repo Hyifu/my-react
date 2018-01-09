@@ -1,14 +1,5 @@
 import { combineReducers } from 'redux'
-import AT from '../constants/actionTypes'
-const createTypes = TYPE => ({
-  R: `${AT[TYPE]}_REQUEST`,
-  S: `${AT[TYPE]}_SUCCESS`,
-  F: `${AT[TYPE]}_FAILURE`
-})
-
-//
-// ********************************************************************
-//
+import { AT, createAsyncTypes } from '../constants/actionTypes'
 
 const layout = (state = {
   header: true,
@@ -19,7 +10,7 @@ const layout = (state = {
   return state
 }
 
-const USER = createTypes(AT.USER)
+const USER = createAsyncTypes(AT.USER)
 const user = (state = '匿名', action) => {
   switch (action.type) {
     case USER.R:
