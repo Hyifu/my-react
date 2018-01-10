@@ -2,6 +2,9 @@ import React from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import MODULES from './modules'
 
+// 引入 LayoutControler 控制路由与 Layout 的匹配
+import LayoutControler from './containers/Layout'
+
 import { Layout } from 'antd'
 import Header from './containers/Layout/Header'
 import Sider from './containers/Layout/Sider'
@@ -15,6 +18,7 @@ export default class extends React.Component {
     return (
       <BrowserRouter>
         <Layout style={{ height: '100vh' }}>
+          <LayoutControler />
           <Header />
           <Layout>
             <Sider />

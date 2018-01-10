@@ -11,5 +11,6 @@ export const createAsyncTypes = TYPE => ({
 
 export const AT = {
   USER: 'USER',
+  LAYOUT: 'LAYOUT',
   MOVIE_LIST: 'MOVIE_LIST'
 }

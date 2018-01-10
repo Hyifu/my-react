@@ -1,10 +1,9 @@
 import { AT, createAsyncTypes } from '../constants/actionTypes'
 
+const Action = (type, payload = {}) => ({ type, ...payload })
 const createAsyncRequest = base => {
   // 创建异步请求的三种状态 ActionType
   const TYPES = createAsyncTypes(base)
-  // 创建 Action 的 Creator
-  const Action = (type, payload = {}) => ({ type, ...payload })
   //
   return {
     watcher: TYPES.R,
@@ -19,3 +18,4 @@ const createAsyncRequest = base => {
 //
 
 export const onMovieList = createAsyncRequest(AT.MOVIE_LIST)
+export const onLayout = (name, status) => Action(AT.LAYOUT, { name, status })

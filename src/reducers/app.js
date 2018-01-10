@@ -7,6 +7,9 @@ const layout = (state = {
   footer: true,
   bread: false
 }, action) => {
+  if (action.type === AT.LAYOUT) {
+    return { ...state, [action.name]: action.status }
+  }
   return state
 }
 
