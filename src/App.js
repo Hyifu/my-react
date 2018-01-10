@@ -38,8 +38,8 @@ export default class extends React.Component {
                           return <Redirect to={{ pathname: '/login' }} />
                         }
                         // 当未授权时
-                        if (unAuthorized && route.path !== '/403') {
-                          return <Redirect to={{ pathname: '/403' }} />
+                        if (unAuthorized && route.path !== '/401') {
+                          return <Redirect to={{ pathname: '/401' }} />
                         }
                         return <route.component basePath={route.path} />
                       }}

@@ -28,8 +28,8 @@ export default [
     type: 'LOGIN',
     component: Login
   },
-  { path: '/403',
-    type: '403',
+  { path: '/401',
+    type: '401',
     component: NotFound
   },
   { path: '*',
