@@ -15,7 +15,6 @@ export default class extends React.Component {
         loading={isFetching && false}
         dataSource={list}
         split={false}
-        pagination={{ current: 1, pageSize: 20, total: 32 }}
         renderItem={item => (
           <List.Item style={{ border: 0 }}>
             <Card
