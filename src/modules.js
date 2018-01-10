@@ -2,6 +2,7 @@ import asyncComponent from './components/Async'
 import Home from './containers/Home'
 import Login from './containers/Login'
 import NotFound from './pages/NotFound'
+import UnAuthorized from './pages/UnAuthorized'
 
 // 电影模块
 const AsyncMovie = asyncComponent(() => import('./pages/Movie'))
@@ -28,9 +29,9 @@ export default [
     type: 'LOGIN',
     component: Login
   },
-  { path: '/403',
-    type: '403',
-    component: NotFound
+  { path: '/401',
+    type: '401',
+    component: UnAuthorized
   },
   { path: '*',
     type: '404',
