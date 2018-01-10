@@ -1,14 +1,20 @@
 import { combineReducers } from 'redux'
 import { AT, createAsyncTypes } from '../constants/actionTypes'
 
-const layout = (state = {
+const initLayout = {
   header: true,
   sider: true,
   footer: true,
-  bread: false
-}, action) => {
+  bread: true
+}
+const layout = (state = initLayout, action) => {
   if (action.type === AT.LAYOUT) {
-    return { ...state, [action.name]: action.status }
+    const newState = {}
+    const hideParts = action.hideParts && action.hideParts.split(',')
+    hideParts && hideParts.forEach(part => {
+      newState[part] = false
+    })
+    return { ...initLayout, ...newState }
   }
   return state
 }

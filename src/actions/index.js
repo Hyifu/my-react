@@ -18,4 +18,4 @@ const createAsyncRequest = base => {
 //
 
 export const onMovieList = createAsyncRequest(AT.MOVIE_LIST)
-export const onLayout = (name, status) => Action(AT.LAYOUT, { name, status })
+export const onLayout = hideParts => Action(AT.LAYOUT, { hideParts })
