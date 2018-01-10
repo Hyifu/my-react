@@ -3,19 +3,26 @@ export const headerRoutes = [
     name: '首页'
   },
   { key: '/movie',
+    isModule: true,
     name: '电影'
   },
   { key: '/book',
+    isModule: true,
     name: '读书'
   },
   { key: '/music',
+    isModule: true,
     name: '音乐'
+  },
+  { key: '/coming_soon',
+    isModule: false,
+    name: '即将推出'
   }
 ]
 
 // 以模块作为侧边导航的区分
 export const siderRoutes = {
-  'movie': [
+  '/movie': [
     { key: '/movie/latest',
       icon: 'appstore',
       name: '正在上映'
@@ -47,13 +54,13 @@ export const siderRoutes = {
       ]
     }
   ],
-  'book': [
+  '/book': [
     { key: '/book/latest',
       icon: 'appstore',
       name: '最近新书'
     }
   ],
-  'music': [
+  '/music': [
     { key: '/music/latest',
       icon: 'appstore',
       name: '新歌速递'

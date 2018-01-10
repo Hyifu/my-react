@@ -28,7 +28,7 @@ export default class extends React.Component {
     }
     return (
       <Layout.Header className='header'>
-        <a href='/' style={{ height: '48px', float: 'left', marginTop: '8px', lineHeight: 1 }}>
+        <a href='/' title='首页' style={{ height: '48px', float: 'left', marginTop: '8px', lineHeight: 1 }}>
           <img src={logo} height='48' alt='logo' />
         </a>
         <Menu
@@ -38,7 +38,7 @@ export default class extends React.Component {
           selectedKeys={this.state.selectedKeys}
           onSelect={event => this.props.history.push(event.key)}
         >
-          { headerRoutes.map(nav => <Menu.Item key={nav.key}>{ nav.name }</Menu.Item>) }
+          { this.props.headerRoutes.map(nav => <Menu.Item key={nav.key}>{ nav.name }</Menu.Item>) }
         </Menu>
       </Layout.Header>
     )

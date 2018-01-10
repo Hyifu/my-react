@@ -1,5 +1,6 @@
 import React from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import NotFound from '../pages/NotFound'
 
 export default class extends React.Component {
   render () {
@@ -15,7 +16,7 @@ export default class extends React.Component {
             render={props => <route.component />}
           />
         )) }
-        <Redirect from={basePath} to={basePath + ROUTES[0].path} />
+        <Route component={NotFound} />
       </Switch>
     )
   }

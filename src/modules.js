@@ -1,6 +1,7 @@
 import asyncComponent from './components/Async'
 import Home from './containers/Home'
 import Login from './containers/Login'
+import UnAuthorized from './pages/UnAuthorized'
 import NotFound from './pages/NotFound'
 
 // 电影模块
@@ -30,7 +31,7 @@ export default [
   },
   { path: '/401',
     type: '401',
-    component: NotFound
+    component: UnAuthorized
   },
   { path: '*',
     type: '404',

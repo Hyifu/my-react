@@ -1,6 +1,5 @@
 import React from 'react'
 import { Layout, Menu, Icon } from 'antd'
-import { siderRoutes } from '../../routes'
 
 export default class extends React.Component {
   state = {
@@ -18,7 +17,10 @@ export default class extends React.Component {
   }
 
   render () {
-    if (!this.props.visible) {
+    const type = '/' + this.props.location.pathname.split('/')[1]
+    const NAV = this.props.siderRoutes[type]
+    // 如果本模块下无侧边导航或被设置为隐藏
+    if (!this.props.visible || !NAV) {
       return null
     }
     //
@@ -65,11 +67,9 @@ export default class extends React.Component {
       )
     }
     //
-    const type = this.props.location.pathname.split('/')[1]
-    //
     return (
       <Layout.Sider width={200}>
-        { createMenu(siderRoutes[type]) }
+        { createMenu(NAV) }
       </Layout.Sider>
     )
   }
