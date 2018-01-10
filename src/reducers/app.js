@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { AT, createAsyncTypes } from '../constants/actionTypes'
+import { headerRoutes, siderRoutes } from '../routes'
 
 const initLayout = {
   header: true,
@@ -19,6 +20,13 @@ const layout = (state = initLayout, action) => {
   return state
 }
 
+const routes = (state = {
+  headerRoutes,
+  siderRoutes
+}, action) => {
+  return state
+}
+
 const USER = createAsyncTypes(AT.USER)
 const user = (state = '匿名', action) => {
   switch (action.type) {
@@ -35,5 +43,6 @@ const user = (state = '匿名', action) => {
 
 export default combineReducers({
   layout,
+  routes,
   user
 })
