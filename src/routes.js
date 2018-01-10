@@ -1,0 +1,62 @@
+export const headerRoutes = [
+  { key: '/',
+    name: '首页'
+  },
+  { key: '/movie',
+    name: '电影'
+  },
+  { key: '/book',
+    name: '读书'
+  },
+  { key: '/music',
+    name: '音乐'
+  }
+]
+
+// 以模块作为侧边导航的区分
+export const siderRoutes = {
+  'movie': [
+    { key: '/movie/latest',
+      icon: 'appstore',
+      name: '正在上映'
+    },
+    { key: '/movie/list/coming_soon',
+      icon: 'appstore',
+      name: '即将上映'
+    },
+    { key: 'charts',
+      icon: 'appstore',
+      name: '榜单',
+      subMenu: [
+        { key: '/movie/list/top250',
+          icon: 'appstore',
+          name: 'Top250'
+        },
+        { key: '/movie/list/weekly',
+          icon: 'appstore',
+          name: '口碑榜'
+        },
+        { key: '/movie/list/us_box',
+          icon: 'appstore',
+          name: '北美票房榜'
+        },
+        { key: '/movie/list/new_movies',
+          icon: 'appstore',
+          name: '新片榜'
+        }
+      ]
+    }
+  ],
+  'book': [
+    { key: '/book/latest',
+      icon: 'appstore',
+      name: '最近新书'
+    }
+  ],
+  'music': [
+    { key: '/music/latest',
+      icon: 'appstore',
+      name: '新歌速递'
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../assets/logo.svg'
 import { Layout, Menu } from 'antd'
+import { headerRoutes } from '../../routes'
 
 export default class extends React.Component {
   state = {
@@ -37,10 +38,7 @@ export default class extends React.Component {
           selectedKeys={this.state.selectedKeys}
           onSelect={event => this.props.history.push(event.key)}
         >
-          <Menu.Item key='/'>首页</Menu.Item>
-          <Menu.Item key='/movie'>电影</Menu.Item>
-          <Menu.Item key='/book'>读书</Menu.Item>
-          <Menu.Item key='/music'>音乐</Menu.Item>
+          { headerRoutes.map(nav => <Menu.Item key={nav.key}>{ nav.name }</Menu.Item>) }
         </Menu>
       </Layout.Header>
     )

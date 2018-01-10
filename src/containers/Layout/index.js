@@ -23,17 +23,17 @@ class LayoutControler extends React.Component {
 
   configs = [
     { path: /^\/$/, // 正则匹配表达式
-      hideParts: 'sider,footer' // 在对应 path 需要隐藏的 layout 组件名，以逗号分隔
-    },
-    { path: /\/music/,
-      hideParts: 'sider,bread'
-    },
-    { path: /\/movie\/list/,
-      hideParts: 'bread'
-    },
-    { path: /\/movie\/latest/,
-      hideParts: 'footer'
+      hideParts: 'sider,bread' // 在对应 path 需要隐藏的 layout 组件名，以逗号分隔
     }
+    // { path: /\/music/,
+    //   hideParts: 'sider,bread'
+    // },
+    // { path: /\/movie\/list/,
+    //   hideParts: 'bread'
+    // },
+    // { path: /\/movie\/latest/,
+    //   hideParts: 'footer'
+    // }
   ]
 
   onChange = props => {
