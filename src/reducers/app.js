@@ -2,24 +2,25 @@ import { combineReducers } from 'redux'
 import { AT, createAsyncTypes } from '../constants/actionTypes'
 import { headerRoutes, siderRoutes } from '../routes'
 
-const initLayout = {
+const initialLayout = {
   header: true,
   sider: true,
   footer: true,
   bread: true
 }
-const layout = (state = initLayout, action) => {
+const layout = (state = initialLayout, action) => {
   if (action.type === AT.LAYOUT) {
     const newState = {}
     const hideParts = action.hideParts && action.hideParts.split(',')
     hideParts && hideParts.forEach(part => {
       newState[part] = false
     })
-    return { ...initLayout, ...newState }
+    return { ...initialLayout, ...newState }
   }
   return state
 }
 
+// 对导航的访问权限做控制，过滤基础路由生成授权路由并返回
 const routes = (state = {
   headerRoutes,
   siderRoutes

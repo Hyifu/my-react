@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import NotFound from '../pages/NotFound'
 
+// 本组件作为嵌套父层组件，提供路由解析渲染
 export default class extends React.Component {
   render () {
     const { basePath, ROUTES } = this.props

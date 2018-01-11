@@ -5,6 +5,7 @@ import { onLayout } from '../../actions/index'
 
 // 本组件主要负责监听路由，实现不同路由展示不同 layout
 // header => 头部 & sider => 侧边导航 & footer => 底部版权 & bread => 面包屑导航
+// 同时在这边需要配合授权做路由重定向的判定
 class LayoutControler extends React.Component {
   state = {
     defaultFlag: true // 如果当前是默认 layout 布局，则标记为 true
@@ -15,7 +16,7 @@ class LayoutControler extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    // 避免路由不变而 props 更新导致的死循环
+    // 避免路由不变而 props 更新的判断
     if (nextProps.location !== this.props.location) {
       this.onChange(nextProps)
     }

@@ -1,9 +1,10 @@
+// 头部导航
 export const headerRoutes = [
   { key: '/',
     name: '首页'
   },
   { key: '/movie',
-    isModule: true,
+    isModule: true, // 如果是模块，则可能需要对此路由进行重定向
     name: '电影'
   },
   { key: '/book',

@@ -1,7 +1,6 @@
 import React from 'react'
 import logo from '../../assets/logo.svg'
 import { Layout, Menu } from 'antd'
-import { headerRoutes } from '../../routes'
 
 export default class extends React.Component {
   state = {
