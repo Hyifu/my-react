@@ -1,5 +1,5 @@
 import React from 'react'
-import Wrapper from '../../components/Wrapper'
+import Switcher from '../../components/Switcher'
 import MovieLatest from '../../containers/Movie/Latest'
 import MovieList from '../../containers/Movie/List'
 import MovieDetail from '../../containers/Movie/Detail'
@@ -26,7 +26,7 @@ export default class extends React.Component {
   render () {
     return (
       <div>
-        <Wrapper
+        <Switcher
           basePath={this.props.basePath}
           ROUTES={this.ROUTES}
         />

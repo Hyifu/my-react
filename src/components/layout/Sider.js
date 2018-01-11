@@ -17,10 +17,11 @@ export default class extends React.Component {
   }
 
   render () {
-    const type = '/' + this.props.location.pathname.split('/')[1]
-    const NAV = this.props.siderRoutes[type]
-    // 如果本模块下无侧边导航或被设置为隐藏
-    if (!this.props.visible || !NAV) {
+    const { visible, location, siderRoutes } = this.props
+    const type = '/' + location.pathname.split('/')[1]
+    const NAV = siderRoutes && siderRoutes[type]
+    // 如果本模块下无侧边导航或被设置为隐藏或权限列表未获取
+    if (!visible || !NAV) {
       return null
     }
     //

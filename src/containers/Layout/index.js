@@ -25,6 +25,9 @@ class LayoutControler extends React.Component {
   configs = [
     { path: /^\/$/, // 正则匹配表达式
       hideParts: 'sider,bread' // 在对应 path 需要隐藏的 layout 组件名，以逗号分隔
+    },
+    { path: /\/login/,
+      hideParts: 'header,sider,bread'
     }
     // { path: /\/music/,
     //   hideParts: 'sider,bread'

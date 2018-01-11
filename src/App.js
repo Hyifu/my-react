@@ -1,8 +1,9 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import MODULES from './modules'
+import Switcher from './containers/Switcher'
 
-// 引入 LayoutControler 控制路由与 Layout 的匹配
+// 引入 Controler 控制路由与 Layout 布局的匹配
 import LayoutControler from './containers/Layout'
 
 import { Layout } from 'antd'
@@ -13,8 +14,6 @@ import Footer from './containers/Layout/Footer'
 
 export default class extends React.Component {
   render () {
-    const unAuthorized = false // 判断页面授权情况
-    const unLogin = false // 判断登录情况
     return (
       <BrowserRouter>
         <Layout style={{ height: '100vh' }}>
@@ -25,27 +24,7 @@ export default class extends React.Component {
             <Layout style={{ padding: '12px' }}>
               <Breadcrumb />
               <Layout.Content style={{ background: '#fff', padding: '16px', borderRadius: '5px' }}>
-                <Switch>
-                  { MODULES.map(route => (
-                    <Route
-                      // 如果 exact 为 false。`/not-match` 也将激活首页导航的 activeClass
-                      exact={route.exact}
-                      key={route.type}
-                      path={route.path}
-                      render={() => {
-                        // 当未登录时
-                        if (unLogin && route.path !== '/login') {
-                          return <Redirect to={{ pathname: '/login' }} />
-                        }
-                        // 当未授权时
-                        if (unAuthorized && route.path !== '/401') {
-                          return <Redirect to={{ pathname: '/401' }} />
-                        }
-                        return <route.component basePath={route.path} />
-                      }}
-                    />
-                  )) }
-                </Switch>
+                <Switcher basePath='' ROUTES={MODULES} />
               </Layout.Content>
               <Footer />
             </Layout>
