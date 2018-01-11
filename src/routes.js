@@ -68,3 +68,5 @@ export const siderRoutes = {
     }
   ]
 }
+
+export const authorizedRoutes = ['/', '/login', '/music', '/movie', '/movie/list/new_movies', '/movie/list/top250']

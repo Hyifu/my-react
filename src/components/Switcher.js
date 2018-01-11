@@ -6,8 +6,7 @@ import NotFound from '../pages/NotFound'
 // 本组件作为嵌套路由组件，提供路由解析渲染和重定向等
 export default class extends React.Component {
   render () {
-    const { basePath, ROUTES, headerRoutes, siderRoutes } = this.props
-    console.log(this.props)
+    const { location, basePath, ROUTES, authorizedRoutes } = this.props
     return (
       <Switch>
         { ROUTES.map(route => (
@@ -18,11 +17,11 @@ export default class extends React.Component {
             path={basePath + route.path}
             render={() => {
               // 当未登录时
-              if (!headerRoutes && !siderRoutes && route.path !== '/login') {
+              if (!authorizedRoutes && route.path !== '/login') {
                 return <Redirect to={{ pathname: '/login' }} />
               }
               // 当未授权时，在本页面内展示 401
-              if (route.noAuth && route.path !== '/401') {
+              if (!authorizedRoutes.includes(location.pathname) && route.path !== '/401') {
                 return <Route component={UnAuthorized} />
               }
               return <route.component basePath={route.path} />

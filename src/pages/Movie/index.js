@@ -25,12 +25,10 @@ export default class extends React.Component {
 
   render () {
     return (
-      <div>
-        <Switcher
-          basePath={this.props.basePath}
-          ROUTES={this.ROUTES}
-        />
-      </div>
+      <Switcher
+        basePath={this.props.basePath}
+        ROUTES={this.ROUTES}
+      />
     )
   }
 }

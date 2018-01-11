@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { AT, createAsyncTypes } from '../constants/actionTypes'
-import { headerRoutes, siderRoutes } from '../routes'
+import { headerRoutes, siderRoutes, authorizedRoutes } from '../routes'
 
 const initialLayout = {
   header: true,
@@ -23,7 +23,8 @@ const layout = (state = initialLayout, action) => {
 // 对导航的访问权限做控制，过滤基础路由生成授权路由并返回
 const routes = (state = {
   headerRoutes,
-  siderRoutes
+  siderRoutes,
+  authorizedRoutes
 }, action) => {
   return state
 }

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Switcher from '../components/Switcher'
 
 const mapStateToProps = state => ({
-  headerRoutes: state.app.routes.headerRoutes,
-  siderRoutes: state.app.routes.siderRoutes
+  authorizedRoutes: state.app.routes.authorizedRoutes
 })
 
-export default connect(mapStateToProps, null)(Switcher)
+export default withRouter(connect(mapStateToProps, null)(Switcher))
