@@ -1,5 +1,5 @@
 // 头部导航
-export const headerRoutes = [
+export const headerNav = [
   { key: '/',
     name: '首页'
   },
@@ -22,7 +22,7 @@ export const headerRoutes = [
 ]
 
 // 以模块作为侧边导航的区分
-export const siderRoutes = {
+export const siderNav = {
   '/movie': [
     { key: '/movie/latest',
       icon: 'appstore',

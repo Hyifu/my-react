@@ -1,5 +1,5 @@
 import React from 'react'
-import Switcher from '../../components/Switcher'
+import Switcher from '../../containers/Switcher'
 import MovieLatest from '../../containers/Movie/Latest'
 import MovieList from '../../containers/Movie/List'
 import MovieDetail from '../../containers/Movie/Detail'

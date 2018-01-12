@@ -4,7 +4,7 @@ import Header from '../../components/layout/Header'
 
 const mapStateToProps = state => ({
   visible: state.app.layout.header,
-  headerRoutes: state.app.routes.headerRoutes
+  headerNav: state.app.routes.headerNav
 })
 
 const mapDispatchToProps = {}

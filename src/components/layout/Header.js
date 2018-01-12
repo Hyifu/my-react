@@ -22,9 +22,9 @@ export default class extends React.Component {
   }
 
   render () {
-    const { visible, history, headerRoutes } = this.props
+    const { visible, history, headerNav } = this.props
     // 如果本模块下被设置为隐藏或权限列表未获取
-    if (!visible || !headerRoutes) {
+    if (!visible || !headerNav) {
       return null
     }
     return (
@@ -39,7 +39,7 @@ export default class extends React.Component {
           selectedKeys={this.state.selectedKeys}
           onSelect={event => history.push(event.key)}
         >
-          { headerRoutes.map(nav => <Menu.Item key={nav.key}>{ nav.name }</Menu.Item>) }
+          { headerNav.map(nav => <Menu.Item key={nav.key}>{ nav.name }</Menu.Item>) }
         </Menu>
       </Layout.Header>
     )

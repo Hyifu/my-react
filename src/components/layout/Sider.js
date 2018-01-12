@@ -17,9 +17,9 @@ export default class extends React.Component {
   }
 
   render () {
-    const { visible, location, siderRoutes } = this.props
+    const { visible, location, siderNav } = this.props
     const type = '/' + location.pathname.split('/')[1]
-    const NAV = siderRoutes && siderRoutes[type]
+    const NAV = siderNav && siderNav[type]
     // 如果本模块下无侧边导航或被设置为隐藏或权限列表未获取
     if (!visible || !NAV) {
       return null
