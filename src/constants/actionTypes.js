@@ -10,7 +10,7 @@ export const createAsyncTypes = TYPE => ({
 //
 
 export const AT = {
-  USER: 'USER',
+  AUTH: 'AUTH',
   LAYOUT: 'LAYOUT',
   MOVIE_LIST: 'MOVIE_LIST'
 }

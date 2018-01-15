@@ -21,7 +21,7 @@ export default class extends React.Component {
                 return <Redirect to='/login' />
               }
               // 当未授权时，在本页面内展示 401
-              if (!authorizedRoutes.includes(location.pathname) && route.path !== '/401') {
+              if (authorizedRoutes && !authorizedRoutes.includes(location.pathname) && route.path !== '/401') {
                 return <Route component={UnAuthorized} />
               }
               return <route.component basePath={route.path} />

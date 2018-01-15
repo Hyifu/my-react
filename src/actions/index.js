@@ -17,5 +17,9 @@ const createAsyncRequest = base => {
 // *******************业务代码********************
 //
 
+// 全局
+export const onAuth = createAsyncRequest(AT.AUTH)
+
+// 电影模块
 export const onMovieList = createAsyncRequest(AT.MOVIE_LIST)
 export const onLayout = hideParts => Action(AT.LAYOUT, { hideParts })

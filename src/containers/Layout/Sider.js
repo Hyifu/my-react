@@ -4,7 +4,7 @@ import Sider from '../../components/layout/Sider'
 
 const mapStateToProps = state => ({
   visible: state.app.layout.sider,
-  siderNav: state.app.routes.siderNav
+  siderNav: state.app.auth.siderNav
 })
 
 const mapDispatchToProps = {}

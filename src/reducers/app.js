@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
 import { AT, createAsyncTypes } from '../constants/actionTypes'
-import { headerNav, siderNav, authorizedRoutes } from '../navConfig'
 
 const initialLayout = {
   header: true,
@@ -21,23 +20,21 @@ const layout = (state = initialLayout, action) => {
 }
 
 // 对导航的访问权限做控制，过滤基础路由生成授权路由并返回
-const routes = (state = {
-  headerNav,
-  siderNav,
-  authorizedRoutes
+const AUTH = createAsyncTypes(AT.AUTH)
+const auth = (state = {
+  isFetching: false,
+  headerNav: null,
+  siderNav: null,
+  authorizedRoutes: null
 }, action) => {
-  return state
-}
-
-const USER = createAsyncTypes(AT.USER)
-const user = (state = '匿名', action) => {
   switch (action.type) {
-    case USER.R:
-      return '请求中...'
-    case USER.S:
-      return action.user
-    case USER.F:
-      return action.error
+    case AUTH.R:
+      return { ...state, isFetching: true }
+    case AUTH.S:
+      console.log(action)
+      return { ...state, isFetching: false }
+    case AUTH.F:
+      return { ...state, isFetching: false }
     default:
       return state
   }
@@ -45,6 +42,5 @@ const user = (state = '匿名', action) => {
 
 export default combineReducers({
   layout,
-  routes,
-  user
+  auth
 })
