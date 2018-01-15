@@ -29,7 +29,7 @@ export default class extends React.Component {
     }
     return (
       <Layout.Header className='header'>
-        <a href='/' title='首页' style={{ height: '48px', float: 'left', marginTop: '8px', lineHeight: 1 }}>
+        <a href='/' title='首页' style={logoLink}>
           <img src={logo} height='48' alt='logo' />
         </a>
         <Menu
@@ -44,4 +44,12 @@ export default class extends React.Component {
       </Layout.Header>
     )
   }
+}
+
+const logoLink = {
+  height: '48px',
+  width: '80px',
+  float: 'left',
+  marginTop: '8px',
+  lineHeight: 1
 }

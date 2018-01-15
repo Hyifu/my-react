@@ -16,15 +16,23 @@ export default class extends React.Component {
             key={route.type}
             path={basePath + route.path}
             render={() => {
+              const path = basePath + route.path
               // 当未登录时
-              if (!authorizedRoutes && route.path !== '/login') {
+              if (!authorizedRoutes && path !== '/login') {
                 return <Redirect to='/login' />
               }
-              // 当未授权时，在本页面内展示 401
-              if (authorizedRoutes && !authorizedRoutes.includes(location.pathname) && route.path !== '/401') {
-                return <Route component={UnAuthorized} />
+              //
+              if (authorizedRoutes) {
+                // 当已经登录并存在权限信息时，禁止直接跳到登录页面
+                if (path === '/login') {
+                  return <Redirect to='/' />
+                }
+                // 当未授权时，在本页面内展示 401
+                if (!authorizedRoutes.includes(location.pathname) && path !== '/401') {
+                  return <Route component={UnAuthorized} />
+                }
               }
-              return <route.component basePath={route.path} />
+              return <route.component basePath={path} />
             }}
           />
         )) }

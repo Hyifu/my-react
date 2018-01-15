@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Login from '../pages/Login'
 import { onAuth } from '../actions'
 
@@ -10,4 +11,4 @@ const mapDispatchToProps = {
   onAuth: onAuth.request
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))
