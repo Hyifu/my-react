@@ -13,6 +13,15 @@ import Breadcrumb from './containers/Layout/Breadcrumb'
 import Footer from './containers/Layout/Footer'
 
 export default class extends React.Component {
+  componentDidMount () {
+    // 移除加载提示
+    const spinner = document.getElementById('index-spinner')
+    spinner.style.opacity = '0'
+    setTimeout(() => {
+      spinner.parentElement.removeChild(spinner)
+    }, 500)
+  }
+
   render () {
     return (
       <BrowserRouter>

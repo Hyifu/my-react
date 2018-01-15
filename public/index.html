@@ -20,11 +20,47 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <!-- CSS loading 动画样式 -->
+    <style>
+      .spinner-wrapper {
+        width: 80px;
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        z-index: 9999;
+        margin-left: -40px;
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        line-height: 3;
+        transition: all .5s ease;
+        -webkit-transition: all .5s ease;
+      }
+      .spinner {
+        width: 48px;
+        height: 48px;
+        margin: auto;
+        border-radius: 3px;
+        background-color: #c72127;
+        box-shadow: 0 0 18px 3px #f3f3f3;
+        -webkit-box-shadow: 0 0 18px 3px #f3f3f3;
+        animation: sk-rotateplane 1.5s infinite ease-in-out;
+        -webkit-animation: sk-rotateplane 1.5s infinite ease-in-out;
+      }
+      @-webkit-keyframes sk-rotateplane {
+        0% { -webkit-transform: perspective(120px) }
+        50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+        100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+      }
+      @keyframes sk-rotateplane {
+        0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+        50% { transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
+        100% { transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); }
+      }
+    </style>
   </head>
   <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+    <noscript>请启用浏览器的 JavaScript 功能以保证应用正常使用</noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -36,5 +72,10 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- CSS loading 动画 -->
+    <div id="index-spinner" class="spinner-wrapper">
+      <div class="spinner"></div>
+      <div>加载资源中...</div>
+    </div>
   </body>
 </html>
