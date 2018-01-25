@@ -50,6 +50,8 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
+
+//
 module.exports = {
   // Don't attempt to continue if there are any errors.
   bail: true,
@@ -57,7 +59,22 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the polyfills and the app code.
-  entry: ['babel-polyfill', paths.appIndexJs],
+  entry: {
+    // 业务代码打包
+    app: paths.appIndexJs,
+    // 单独打包第三方依赖，注意 'antd' 由于自身有按需引用，因此在这里不建议引入
+    vendors: [
+      'babel-polyfill',
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'redux',
+      'react-redux',
+      'redux-saga',
+      'isomorphic-fetch',
+      'js-cookie'
+    ]
+  },
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -102,6 +119,7 @@ module.exports = {
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
+      new webpack.optimize.CommonsChunkPlugin('vendors'),
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson])
     ]
   },
