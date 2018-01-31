@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+}
+.background {
+  width: 430px;
+  height: 360px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-right: 100px;
+}
+.bg_403 {
+  background-image: url('../../assets/403.svg');
+}
+.bg_404 {
+  background-image: url('../../assets/404.svg');
+}
+.title {
+  color: #434e59;
+  margin-bottom: 24px;
+  font-weight: 600;
+  line-height: 72px;
+  font-size: 72px;
+}
+.desc {
+  color: rgba(0,0,0,.45);
+  font-size: 20px;
+  margin-bottom: 16px;
+  line-height: 28px;
+}
