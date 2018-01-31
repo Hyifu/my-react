@@ -1,20 +1,14 @@
-import { put, takeLatest } from 'redux-saga/effects'
-import { delay } from 'redux-saga'
+import { put, call, takeLatest } from 'redux-saga/effects'
 import { onAuth } from '../actions'
-import { headerNav, siderNav, authorizedRoutes } from '../navConfig'
+import { apiAuth } from './api'
+import { headerNav, siderNav } from '../navConfig'
 
 function * watchAuth () {
   yield takeLatest(onAuth.watcher, function * (action) {
-    const res = {
-      headerNav,
-      siderNav,
-      authorizedRoutes
-    }
-    // 对比本地导航&路由表，对权限进行分配
-    const error = null
-    yield delay(2000) // 请求加上 2000ms 的延迟
+    const { res, error } = yield call(apiAuth)
     if (res) {
-      yield put(onAuth.success({ res }))
+      const result = { authorizedRoutes: res, headerNav, siderNav }
+      yield put(onAuth.success({ res: result }))
     } else {
       yield put(onAuth.failure({ error }))
     }

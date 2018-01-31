@@ -4,19 +4,15 @@ export const headerNav = [
     name: '首页'
   },
   { key: '/movie',
-    isModule: true, // 如果是模块，则可能需要对此路由进行重定向
     name: '电影'
   },
   { key: '/book',
-    isModule: true,
     name: '读书'
   },
   { key: '/music',
-    isModule: true,
     name: '音乐'
   },
   { key: '/coming_soon',
-    isModule: false,
     name: '即将推出'
   }
 ]
@@ -68,5 +64,3 @@ export const siderNav = {
     }
   ]
 }
-
-export const authorizedRoutes = ['/', '/login', '/music', '/movie', '/movie/list/new_movies', '/movie/list/top250']
