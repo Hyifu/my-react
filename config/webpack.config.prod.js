@@ -342,7 +342,8 @@ module.exports = {
         // Pending further investigation:
         // https://github.com/mishoo/UglifyJS2/issues/2011
         comparisons: false,
-        // 生产版本移除所有 console
+        // 在生产版本中去掉所有的 console 和 debugger
+        drop_debugger: true,
         drop_console: true
       },
       mangle: {
