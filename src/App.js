@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import MODULES from './modules'
 import Switcher from './containers/Switcher'
+import { BackTop } from 'antd'
 
 // 引入 Controler 控制路由与 Layout 布局的匹配
 import LayoutControler from './containers/Layout'
@@ -27,12 +28,18 @@ export default class extends React.Component {
       <BrowserRouter>
         <Layout style={{ height: '100vh' }}>
           <LayoutControler />
+          <BackTop />
           <Header />
           <Layout>
             <Sider />
             <Layout style={{ padding: '12px' }}>
               <Breadcrumb />
-              <Layout.Content style={{ background: '#fff', padding: '16px', borderRadius: '5px' }}>
+              <Layout.Content style={{
+                background: '#fff',
+                padding: '16px',
+                borderRadius: '5px',
+                display: 'flex'
+              }}>
                 <Switcher basePath='' ROUTES={MODULES} />
               </Layout.Content>
               <Footer />

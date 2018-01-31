@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  background-image: url('../../assets/bg.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.box {
+  width: 368px;
+  align-self: center;
+  padding-bottom: 240px;
+}
+.box > h2 {
+  color: #666;
+  font-size: 28px;
+  margin-bottom: 20px;
+}

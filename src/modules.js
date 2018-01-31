@@ -5,7 +5,7 @@ import UnAuthorized from './pages/UnAuthorized'
 import NotFound from './pages/NotFound'
 
 // 电影模块
-const AsyncMovie = asyncComponent(() => import('./pages/Movie'))
+const AsyncMovie = asyncComponent(() => import('./containers/Movie'))
 
 export default [
   { path: '/',
