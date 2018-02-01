@@ -3,10 +3,6 @@ import { Button, Input, Icon, Divider, Avatar } from 'antd'
 import styles from './styles.css'
 
 export default class extends React.Component {
-  onLogin = () => {
-    this.props.onAuth()
-  }
-
   render () {
     return (
       <div className={styles.wrapper}>
@@ -37,7 +33,7 @@ export default class extends React.Component {
             <Divider>
               <span style={{ color: '#999' }}>OA 登录</span>
             </Divider>
-            <a onClick={this.onLogin}>
+            <a onClick={this.props.onLogin}>
               <Avatar title='OA 授权登录' size='large' icon='user' />
             </a>
           </div>

@@ -23,7 +23,7 @@ const callApi = (url, args) => {
 
 // 假冒的 API 请求，参数 data 接受你希望返回的结果
 const callFakeApi = data => new Promise(resolve => {
-  setTimeout(() => resolve({ res: data }), 2000)
+  setTimeout(() => resolve({ res: data }), 1000)
 })
 
 //

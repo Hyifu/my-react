@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  onAuth: onAuth.request
+  onLogin: onAuth.request
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))

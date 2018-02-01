@@ -49,7 +49,6 @@ class LayoutControler extends React.Component {
     //
     this.configs.forEach(config => {
       if (config.path.test(location.pathname)) {
-        console.log(location.pathname)
         this.setState({ defaultFlag: false })
         onLayout(config.hideParts)
       }

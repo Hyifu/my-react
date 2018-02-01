@@ -11,9 +11,6 @@ export const headerNav = [
   },
   { key: '/music',
     name: '音乐'
-  },
-  { key: '/coming_soon',
-    name: '即将推出'
   }
 ]
 

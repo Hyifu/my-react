@@ -1,20 +1,22 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import MODULES from './modules'
 import Switcher from './containers/Switcher'
-import { BackTop } from 'antd'
+import { onAuth } from './actions'
 
 // 引入 Controler 控制路由与 Layout 布局的匹配
 import LayoutControler from './containers/Layout'
 
-import { Layout } from 'antd'
+import { Layout, BackTop } from 'antd'
 import Header from './containers/Layout/Header'
 import Sider from './containers/Layout/Sider'
 import Breadcrumb from './containers/Layout/Breadcrumb'
 import Footer from './containers/Layout/Footer'
 
-export default class extends React.Component {
+class App extends React.Component {
   componentDidMount () {
+    this.props.onAuth()
     // 移除加载提示
     const spinner = document.getElementById('index-spinner')
     spinner.style.opacity = '0'
@@ -50,3 +52,7 @@ export default class extends React.Component {
     )
   }
 }
+
+export default connect(state => ({
+  auth: state.app.auth
+}), { onAuth: onAuth.request })(App)
